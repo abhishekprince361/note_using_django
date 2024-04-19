@@ -1,0 +1,42 @@
+{% extends 'note_app/base.html' %}
+{% block title %}
+    User
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+    <h1>{{ func }}</h1>
+    <div class="row">
+        <div class="col">
+            {% for note in all_notes %}
+        <div class="card border-primary mt-3">
+            <div class="card-header row m-1" style="background-color: #AFC8AD">
+                <div class="col-8"><h5>{{ note.title }}</h5></div>
+                <div class="col-4 text-right">{{ note.date }}</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">{{ note.content }}</p>
+                <div class="float-right mr-3">
+                    <a href="/update/{{ note.id }}" class="btn btn-primary mr-4"><i class="fa-solid fa-file-pen"></i> Update</a>
+                    <a href="/delete/{{ note.id }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can"></i> Delete</a>
+                </div>
+            </div>
+        </div>
+            {% empty %}
+            <div class="card border-primary mt-3">
+            <div class="card-header row m-1" style="background-color: #AFC8AD">
+                <div class="col-8"><h5>Not Available</h5></div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

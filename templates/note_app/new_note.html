@@ -1,0 +1,31 @@
+{% extends 'note_app/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/new_note/" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>{{ btn }} Note Here...</legend>
+            
+            <input value="{{ note.id }}" type="hidden" name="id">
+            <input value="{{ user }}" type="hidden" name="user">
+            <div class="form-group">
+                <label for="title"> Title </label>
+                <input type="text" value="{{ note.title }}" class="form-control" id="title" name="title" placeholder="Enter your Note's Title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="noteContent">Note</label>
+                <textarea style="height: 250px;" id="noteContent" class="form-control" name="content" placeholder="Enter Your Content" required>{{ note.content }}</textarea>
+            </div>
+            <div class="container text-center">
+                <button type="submit" class="btn btn-success">{{ btn }}</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'note_app/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    
+    <div class="container">
+    <div class="card border-none pt-5 pb-2" style="background-color: #AAD9BB">
+        <img class="img-fluid mx-auto" style="max-width: 450px" src="{% static 'img/note.png' %}" alt="image Not found">
+        <h1 class="text-primary text-center">Note Application</h1>
+        <div class="row text-center mt-3 mb-2">
+            <div class="col-6">
+                <button onclick="document.location.href={% url 'new_note' %}" class="btn btn-primary">New</button>
+            </div>
+            <div class="col-6">
+                <button onclick="document.location.href={% url 'all_notes' %};" class="btn btn-success">Notes</button>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
